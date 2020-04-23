@@ -1,0 +1,26 @@
+datasource db {
+    provider = "postgresql"
+    url = "postgresql://postgres:docker@localhost:5432/pg-docker?schema=public"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Recipe {
+    id String @default(cuid()) @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title String
+    instructions String[]
+    ingredients String[]
+    imageUrl String
+}
+
+model simpleRecipe {
+    id String @default(cuid()) @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title String
+    ingredients String
+}
