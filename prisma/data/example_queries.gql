@@ -1,0 +1,63 @@
+query getRecipe {
+  Recipe(id: "ck9eomt5k000021v43am1zrss") {
+    id
+    title
+    instructions
+  }
+}
+
+query allRecipes {
+  Recipes {
+    id 
+    title
+    instructions
+  }
+}
+
+mutation createRecipe {
+  createOneRecipe (data: {
+    
+    title: "Chicken Roast"
+    instructions: {
+      set: [
+      "Bake in oven",
+      "Let cool 10 minutes"
+    ]
+    } 
+    imageUrl: "dskjh"
+  } 
+  ){
+    id
+    title
+    instructions
+  }
+  }
+
+  mutation createRecipe {
+  createOneRecipe (data: {
+    
+    title: "Chicken Roast"
+    instructions: {
+      set: [
+      "Bake in oven",
+      "Let cool 10 minutes"
+    ]
+    } 
+    ingredients: {
+    create:  [
+      {
+        title: "Chicken"
+        type: "meat"
+        quantity: "2 lbs"
+      }
+    ]
+    }
+    imageUrl: "dskjh"
+  } 
+  ){
+    id
+    title
+    instructions
+    ingredients
+  }
+  }

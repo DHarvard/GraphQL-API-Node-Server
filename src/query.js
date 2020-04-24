@@ -25,9 +25,6 @@ export const Query = queryType({
           where: {
             OR: [
               { title: { contains: searchString }},
-              { description: { contains: searchString }},
-              { instructions: { contains: searchString }},
-              { ingredients: { contains: searchString }}
             ],
           },
         })
@@ -57,7 +54,6 @@ export const Query = queryType({
           where: {
             OR: [
               { title: { contains: searchString }},
-              { ingredients: { contains: searchString }}
             ],
           },
         })

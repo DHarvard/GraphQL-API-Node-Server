@@ -4,8 +4,10 @@ export const Mutation = mutationType({
     name: 'Mutation',
     definition(t) {
         t.crud.deleteOneRecipe()
+        t.crud.createOneRecipe()
+        t.crud.updateOneRecipe()
         
-        t.field('createRecipe', {
+        /* t.field('createRecipe', {
             type: 'Recipe',
             args: {
                 title: stringArg({ nullable: false }),
@@ -13,10 +15,10 @@ export const Mutation = mutationType({
                 ingredients: stringArg(),
                 imageUrl: stringArg(),
             },
-            resolve: (parent, { name, instructions, ingredients, imageUrl }, ctx) => {
+            resolve: (parent, { title, instructions, ingredients, imageUrl }, ctx) => {
                 return ctx.prisma.recipe.create({
                     data: {
-                        name,
+                        title,
                         instructions,
                         ingredients,
                         imageUrl,
@@ -28,24 +30,24 @@ export const Mutation = mutationType({
         t.field('updateRecipe', {
             type: 'Recipe',
             args: { id: idArg(),
-                name: stringArg(),
+                title: stringArg(),
                 instructions: stringArg(),
                 ingredients: stringArg(),
                 imageUrl: stringArg(),
             },
-            resolve: (parent, { id, name, instructions, ingredients, imageUrl }, ctx) => {
+            resolve: (parent, { id, title, instructions, ingredients, imageUrl }, ctx) => {
                 return ctx.prisma.recipe.update({
                     where: {
                         id
                     },
                     data: {
-                        name,
+                        title,
                         instructions,
                         ingredients,
                         imageUrl,
                     }
                 })
             }
-        })
+        }) */
     }
 })

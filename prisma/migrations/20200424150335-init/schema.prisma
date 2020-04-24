@@ -6,6 +6,12 @@ datasource db {
 generator client {
     provider = "prisma-client-js"
 }
+model Ingredients {
+    id String @default(cuid()) @id
+    title String 
+    quantity String
+    type String
+}
 
 model Recipe {
     id String @default(cuid()) @id
@@ -13,7 +19,7 @@ model Recipe {
     updatedAt DateTime @updatedAt
     title String
     instructions String[]
-    ingredients String[]
+    ingredients Ingredients[]
     imageUrl String
 }
 
@@ -22,5 +28,5 @@ model simpleRecipe {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     title String
-    ingredients String
+    ingredients String[]
 }

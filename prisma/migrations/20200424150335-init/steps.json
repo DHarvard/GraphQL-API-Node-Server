@@ -25,6 +25,74 @@
     },
     {
       "tag": "CreateModel",
+      "model": "Ingredients"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Ingredients",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Ingredients",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Ingredients",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Ingredients",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Ingredients",
+      "field": "title",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Ingredients",
+      "field": "quantity",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Ingredients",
+      "field": "type",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateModel",
       "model": "Recipe"
     },
     {
@@ -138,7 +206,7 @@
       "tag": "CreateField",
       "model": "Recipe",
       "field": "ingredients",
-      "type": "String",
+      "type": "Ingredients",
       "arity": "List"
     },
     {
@@ -257,7 +325,7 @@
       "model": "simpleRecipe",
       "field": "ingredients",
       "type": "String",
-      "arity": "Required"
+      "arity": "List"
     }
   ]
 }

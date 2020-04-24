@@ -5,23 +5,45 @@ const prismaClient = new PrismaClient()
 
 const recipes = fs.readFileSync('prisma/data/recipes.json')
 
-/* function loadRecipes() {
+function loadRecipes() {
     const data = JSON.parse(recipes)
     const allRecipes = data.data
 
     return allRecipes.map(recipe => {
+        const instructions = []
+        const ingredients = []
+
+        for (let i = 0; i < recipe.steps.length; i++) {
+            instructions.push(recipe.steps[i])
+        }
+
+        for (let i = 0; i < recipe.ingredients.length; i++) {
+            const quantity = recipe.ingredients[i].quantity
+            const name = recipe.ingredients[i].name
+            const type = recipe.ingredients[i].type
+
+            ingredients.push({
+                quantity,
+                title: name,
+                type
+            })
+        }
         return {
             data: {
                 title: recipe.name,
-                instructions: recipe.steps[1],
-                ingredients: recipe.ingredients[1].name,
+                instructions: {
+                    set: instructions
+                },
+                ingredients: {
+                    set: ingredients
+                },
                 imageUrl: recipe.imageURL
             },
         }
     })
-} */
+}
 
-function loadRecipes() {
+/* function loadRecipes() {
     const data = JSON.parse(recipes)
     const allRecipes = data.data
 
@@ -49,7 +71,7 @@ function loadRecipes() {
             },
         }
     })
-}
+} */
 
 async function main() {
     try {
@@ -62,30 +84,6 @@ async function main() {
         console.log(err)
     }
 }
-
-/* async function createRecipe() {
-    try {
-        await prismaClient.recipe.create({
-            data: {
-                title: 'My First Recipe',
-                description: 'Delicious pork',
-                instructions: 'Write instructions on how to make recipe',
-                ingredients: 'List the required ingredients'
-            }
-        })
-    } catch(err) {
-    console.log(err)
-    } 
-} */
-
-
-/* async function main () {
-    try {
-        await createRecipe()
-    } catch(err) {
-        console.log(err)
-    }
-} */
 
 main()
 .catch(e => console.error(e))

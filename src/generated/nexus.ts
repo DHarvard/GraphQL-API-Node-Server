@@ -19,8 +19,103 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  IngredientsCreateManyWithoutRecipeInput: { // input type
+    connect?: NexusGenInputs['IngredientsWhereUniqueInput'][] | null; // [IngredientsWhereUniqueInput!]
+    create?: NexusGenInputs['IngredientsCreateWithoutRecipeInput'][] | null; // [IngredientsCreateWithoutRecipeInput!]
+  }
+  IngredientsCreateWithoutRecipeInput: { // input type
+    id?: string | null; // String
+    quantity: string; // String!
+    title: string; // String!
+    type: string; // String!
+  }
+  IngredientsScalarWhereInput: { // input type
+    AND?: NexusGenInputs['IngredientsScalarWhereInput'][] | null; // [IngredientsScalarWhereInput!]
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['IngredientsScalarWhereInput'][] | null; // [IngredientsScalarWhereInput!]
+    OR?: NexusGenInputs['IngredientsScalarWhereInput'][] | null; // [IngredientsScalarWhereInput!]
+    quantity?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  IngredientsUpdateManyDataInput: { // input type
+    id?: string | null; // String
+    quantity?: string | null; // String
+    title?: string | null; // String
+    type?: string | null; // String
+  }
+  IngredientsUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['IngredientsUpdateManyDataInput']; // IngredientsUpdateManyDataInput!
+    where: NexusGenInputs['IngredientsScalarWhereInput']; // IngredientsScalarWhereInput!
+  }
+  IngredientsUpdateManyWithoutRecipeInput: { // input type
+    connect?: NexusGenInputs['IngredientsWhereUniqueInput'][] | null; // [IngredientsWhereUniqueInput!]
+    create?: NexusGenInputs['IngredientsCreateWithoutRecipeInput'][] | null; // [IngredientsCreateWithoutRecipeInput!]
+    delete?: NexusGenInputs['IngredientsWhereUniqueInput'][] | null; // [IngredientsWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['IngredientsScalarWhereInput'][] | null; // [IngredientsScalarWhereInput!]
+    disconnect?: NexusGenInputs['IngredientsWhereUniqueInput'][] | null; // [IngredientsWhereUniqueInput!]
+    set?: NexusGenInputs['IngredientsWhereUniqueInput'][] | null; // [IngredientsWhereUniqueInput!]
+    update?: NexusGenInputs['IngredientsUpdateWithWhereUniqueWithoutRecipeInput'][] | null; // [IngredientsUpdateWithWhereUniqueWithoutRecipeInput!]
+    updateMany?: NexusGenInputs['IngredientsUpdateManyWithWhereNestedInput'][] | null; // [IngredientsUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['IngredientsUpsertWithWhereUniqueWithoutRecipeInput'][] | null; // [IngredientsUpsertWithWhereUniqueWithoutRecipeInput!]
+  }
+  IngredientsUpdateWithWhereUniqueWithoutRecipeInput: { // input type
+    data: NexusGenInputs['IngredientsUpdateWithoutRecipeDataInput']; // IngredientsUpdateWithoutRecipeDataInput!
+    where: NexusGenInputs['IngredientsWhereUniqueInput']; // IngredientsWhereUniqueInput!
+  }
+  IngredientsUpdateWithoutRecipeDataInput: { // input type
+    id?: string | null; // String
+    quantity?: string | null; // String
+    title?: string | null; // String
+    type?: string | null; // String
+  }
+  IngredientsUpsertWithWhereUniqueWithoutRecipeInput: { // input type
+    create: NexusGenInputs['IngredientsCreateWithoutRecipeInput']; // IngredientsCreateWithoutRecipeInput!
+    update: NexusGenInputs['IngredientsUpdateWithoutRecipeDataInput']; // IngredientsUpdateWithoutRecipeDataInput!
+    where: NexusGenInputs['IngredientsWhereUniqueInput']; // IngredientsWhereUniqueInput!
+  }
+  IngredientsWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
+  RecipeCreateInput: { // input type
+    createdAt?: any | null; // DateTime
+    id?: string | null; // String
+    imageUrl: string; // String!
+    ingredients?: NexusGenInputs['IngredientsCreateManyWithoutRecipeInput'] | null; // IngredientsCreateManyWithoutRecipeInput
+    instructions?: NexusGenInputs['RecipeCreateinstructionsInput'] | null; // RecipeCreateinstructionsInput
+    title: string; // String!
+    updatedAt?: any | null; // DateTime
+  }
+  RecipeCreateinstructionsInput: { // input type
+    set?: string[] | null; // [String!]
+  }
+  RecipeUpdateInput: { // input type
+    createdAt?: any | null; // DateTime
+    id?: string | null; // String
+    imageUrl?: string | null; // String
+    ingredients?: NexusGenInputs['IngredientsUpdateManyWithoutRecipeInput'] | null; // IngredientsUpdateManyWithoutRecipeInput
+    instructions?: NexusGenInputs['RecipeUpdateinstructionsInput'] | null; // RecipeUpdateinstructionsInput
+    title?: string | null; // String
+    updatedAt?: any | null; // DateTime
+  }
+  RecipeUpdateinstructionsInput: { // input type
+    set?: string[] | null; // [String!]
+  }
   RecipeWhereUniqueInput: { // input type
     id?: string | null; // String
+  }
+  StringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
   }
 }
 
@@ -28,6 +123,7 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  Ingredients: prisma.Ingredients;
   Mutation: {};
   Query: {};
   Recipe: prisma.Recipe;
@@ -41,14 +137,35 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  IngredientsCreateManyWithoutRecipeInput: NexusGenInputs['IngredientsCreateManyWithoutRecipeInput'];
+  IngredientsCreateWithoutRecipeInput: NexusGenInputs['IngredientsCreateWithoutRecipeInput'];
+  IngredientsScalarWhereInput: NexusGenInputs['IngredientsScalarWhereInput'];
+  IngredientsUpdateManyDataInput: NexusGenInputs['IngredientsUpdateManyDataInput'];
+  IngredientsUpdateManyWithWhereNestedInput: NexusGenInputs['IngredientsUpdateManyWithWhereNestedInput'];
+  IngredientsUpdateManyWithoutRecipeInput: NexusGenInputs['IngredientsUpdateManyWithoutRecipeInput'];
+  IngredientsUpdateWithWhereUniqueWithoutRecipeInput: NexusGenInputs['IngredientsUpdateWithWhereUniqueWithoutRecipeInput'];
+  IngredientsUpdateWithoutRecipeDataInput: NexusGenInputs['IngredientsUpdateWithoutRecipeDataInput'];
+  IngredientsUpsertWithWhereUniqueWithoutRecipeInput: NexusGenInputs['IngredientsUpsertWithWhereUniqueWithoutRecipeInput'];
+  IngredientsWhereUniqueInput: NexusGenInputs['IngredientsWhereUniqueInput'];
+  RecipeCreateInput: NexusGenInputs['RecipeCreateInput'];
+  RecipeCreateinstructionsInput: NexusGenInputs['RecipeCreateinstructionsInput'];
+  RecipeUpdateInput: NexusGenInputs['RecipeUpdateInput'];
+  RecipeUpdateinstructionsInput: NexusGenInputs['RecipeUpdateinstructionsInput'];
   RecipeWhereUniqueInput: NexusGenInputs['RecipeWhereUniqueInput'];
+  StringFilter: NexusGenInputs['StringFilter'];
 }
 
 export interface NexusGenFieldTypes {
+  Ingredients: { // field return type
+    id: string; // String!
+    quantity: string; // String!
+    title: string; // String!
+    type: string; // String!
+  }
   Mutation: { // field return type
-    createRecipe: NexusGenRootTypes['Recipe']; // Recipe!
+    createOneRecipe: NexusGenRootTypes['Recipe']; // Recipe!
     deleteOneRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
-    updateRecipe: NexusGenRootTypes['Recipe']; // Recipe!
+    updateOneRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
   }
   Query: { // field return type
     Recipe: NexusGenRootTypes['Recipe'] | null; // Recipe
@@ -59,7 +176,7 @@ export interface NexusGenFieldTypes {
   Recipe: { // field return type
     createdAt: any; // DateTime!
     id: string; // String!
-    ingredients: string[]; // [String!]!
+    ingredients: NexusGenRootTypes['Ingredients'][]; // [Ingredients!]!
     instructions: string[]; // [String!]!
     title: string; // String!
     updatedAt: any; // DateTime!
@@ -67,7 +184,7 @@ export interface NexusGenFieldTypes {
   simpleRecipe: { // field return type
     createdAt: any; // DateTime!
     id: string; // String!
-    ingredients: string; // String!
+    ingredients: string[]; // [String!]!
     title: string; // String!
     updatedAt: any; // DateTime!
   }
@@ -75,21 +192,15 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createRecipe: { // args
-      imageUrl?: string | null; // String
-      ingredients?: string | null; // String
-      instructions?: string | null; // String
-      title: string; // String!
+    createOneRecipe: { // args
+      data: NexusGenInputs['RecipeCreateInput']; // RecipeCreateInput!
     }
     deleteOneRecipe: { // args
       where: NexusGenInputs['RecipeWhereUniqueInput']; // RecipeWhereUniqueInput!
     }
-    updateRecipe: { // args
-      id?: string | null; // ID
-      imageUrl?: string | null; // String
-      ingredients?: string | null; // String
-      instructions?: string | null; // String
-      name?: string | null; // String
+    updateOneRecipe: { // args
+      data: NexusGenInputs['RecipeUpdateInput']; // RecipeUpdateInput!
+      where: NexusGenInputs['RecipeWhereUniqueInput']; // RecipeWhereUniqueInput!
     }
   }
   Query: {
@@ -106,6 +217,15 @@ export interface NexusGenArgTypes {
       searchString?: string | null; // String
     }
   }
+  Recipe: {
+    ingredients: { // args
+      after?: NexusGenInputs['IngredientsWhereUniqueInput'] | null; // IngredientsWhereUniqueInput
+      before?: NexusGenInputs['IngredientsWhereUniqueInput'] | null; // IngredientsWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -113,9 +233,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Mutation" | "Query" | "Recipe" | "simpleRecipe";
+export type NexusGenObjectNames = "Ingredients" | "Mutation" | "Query" | "Recipe" | "simpleRecipe";
 
-export type NexusGenInputNames = "RecipeWhereUniqueInput";
+export type NexusGenInputNames = "IngredientsCreateManyWithoutRecipeInput" | "IngredientsCreateWithoutRecipeInput" | "IngredientsScalarWhereInput" | "IngredientsUpdateManyDataInput" | "IngredientsUpdateManyWithWhereNestedInput" | "IngredientsUpdateManyWithoutRecipeInput" | "IngredientsUpdateWithWhereUniqueWithoutRecipeInput" | "IngredientsUpdateWithoutRecipeDataInput" | "IngredientsUpsertWithWhereUniqueWithoutRecipeInput" | "IngredientsWhereUniqueInput" | "RecipeCreateInput" | "RecipeCreateinstructionsInput" | "RecipeUpdateInput" | "RecipeUpdateinstructionsInput" | "RecipeWhereUniqueInput" | "StringFilter";
 
 export type NexusGenEnumNames = never;
 

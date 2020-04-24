@@ -1,5 +1,15 @@
 import { objectType } from 'nexus'
 
+const Ingredients = objectType({
+  name: 'Ingredients',
+  definition(t) {
+    t.model.id()
+    t.model.title()
+    t.model.quantity()
+    t.model.type()
+  }
+})
+
 const Recipe = objectType({
   name: 'Recipe',
   definition(t) {
@@ -24,6 +34,7 @@ const SimpleRecipe = objectType({
 })
 
 export const Models = [
+  Ingredients,
   Recipe,
   SimpleRecipe
 ]
