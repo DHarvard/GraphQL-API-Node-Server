@@ -39,7 +39,11 @@ function loadRecipes() {
                         title,
                         quantity,
                         type
-                    }))
+                    }) => ({
+                        title,
+                        quantity,
+                        type
+                    })) 
                 },
                 imageUrl: recipe.imageURL
             },
