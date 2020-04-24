@@ -20,6 +20,7 @@ model Recipe {
     title String
     instructions String[]
     ingredients Ingredients[]
+    // ingredients String[]
     imageUrl String
 }
 

@@ -35,7 +35,11 @@ function loadRecipes() {
                     set: instructions
                 },
                 ingredients: {
-                    set: ingredients
+                    create: ingredients.map(({
+                        title,
+                        quantity,
+                        type
+                    }))
                 },
                 imageUrl: recipe.imageURL
             },

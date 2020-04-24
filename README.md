@@ -36,9 +36,9 @@ npm run launchDocker
 npm run createDB
 ```
 
-#### Migrate the DB
+#### Generate
 ```
-npm run migrateDB
+npm run generate
 ```
 
 #### Runs the seed scripts

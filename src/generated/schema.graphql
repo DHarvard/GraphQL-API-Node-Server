@@ -11,74 +11,6 @@ type Ingredients {
   type: String!
 }
 
-input IngredientsCreateManyWithoutRecipeInput {
-  connect: [IngredientsWhereUniqueInput!]
-  create: [IngredientsCreateWithoutRecipeInput!]
-}
-
-input IngredientsCreateWithoutRecipeInput {
-  id: String
-  quantity: String!
-  title: String!
-  type: String!
-}
-
-input IngredientsScalarWhereInput {
-  AND: [IngredientsScalarWhereInput!]
-  id: StringFilter
-  NOT: [IngredientsScalarWhereInput!]
-  OR: [IngredientsScalarWhereInput!]
-  quantity: StringFilter
-  title: StringFilter
-  type: StringFilter
-}
-
-input IngredientsUpdateManyDataInput {
-  id: String
-  quantity: String
-  title: String
-  type: String
-}
-
-input IngredientsUpdateManyWithoutRecipeInput {
-  connect: [IngredientsWhereUniqueInput!]
-  create: [IngredientsCreateWithoutRecipeInput!]
-  delete: [IngredientsWhereUniqueInput!]
-  deleteMany: [IngredientsScalarWhereInput!]
-  disconnect: [IngredientsWhereUniqueInput!]
-  set: [IngredientsWhereUniqueInput!]
-  update: [IngredientsUpdateWithWhereUniqueWithoutRecipeInput!]
-  updateMany: [IngredientsUpdateManyWithWhereNestedInput!]
-  upsert: [IngredientsUpsertWithWhereUniqueWithoutRecipeInput!]
-}
-
-input IngredientsUpdateManyWithWhereNestedInput {
-  data: IngredientsUpdateManyDataInput!
-  where: IngredientsScalarWhereInput!
-}
-
-input IngredientsUpdateWithoutRecipeDataInput {
-  id: String
-  quantity: String
-  title: String
-  type: String
-}
-
-input IngredientsUpdateWithWhereUniqueWithoutRecipeInput {
-  data: IngredientsUpdateWithoutRecipeDataInput!
-  where: IngredientsWhereUniqueInput!
-}
-
-input IngredientsUpsertWithWhereUniqueWithoutRecipeInput {
-  create: IngredientsCreateWithoutRecipeInput!
-  update: IngredientsUpdateWithoutRecipeDataInput!
-  where: IngredientsWhereUniqueInput!
-}
-
-input IngredientsWhereUniqueInput {
-  id: String
-}
-
 type Mutation {
   createOneRecipe(data: RecipeCreateInput!): Recipe!
   deleteOneRecipe(where: RecipeWhereUniqueInput!): Recipe
@@ -95,17 +27,21 @@ type Query {
 type Recipe {
   createdAt: DateTime!
   id: String!
-  ingredients(after: IngredientsWhereUniqueInput, before: IngredientsWhereUniqueInput, first: Int, last: Int, skip: Int): [Ingredients!]!
+  ingredients: [String!]!
   instructions: [String!]!
   title: String!
   updatedAt: DateTime!
+}
+
+input RecipeCreateingredientsInput {
+  set: [String!]
 }
 
 input RecipeCreateInput {
   createdAt: DateTime
   id: String
   imageUrl: String!
-  ingredients: IngredientsCreateManyWithoutRecipeInput
+  ingredients: RecipeCreateingredientsInput
   instructions: RecipeCreateinstructionsInput
   title: String!
   updatedAt: DateTime
@@ -115,11 +51,15 @@ input RecipeCreateinstructionsInput {
   set: [String!]
 }
 
+input RecipeUpdateingredientsInput {
+  set: [String!]
+}
+
 input RecipeUpdateInput {
   createdAt: DateTime
   id: String
   imageUrl: String
-  ingredients: IngredientsUpdateManyWithoutRecipeInput
+  ingredients: RecipeUpdateingredientsInput
   instructions: RecipeUpdateinstructionsInput
   title: String
   updatedAt: DateTime
@@ -139,18 +79,4 @@ type simpleRecipe {
   ingredients: [String!]!
   title: String!
   updatedAt: DateTime!
-}
-
-input StringFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  not: String
-  notIn: [String!]
-  startsWith: String
 }
