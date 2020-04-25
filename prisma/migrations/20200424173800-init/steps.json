@@ -324,7 +324,7 @@
       "tag": "CreateField",
       "model": "simpleRecipe",
       "field": "ingredients",
-      "type": "String",
+      "type": "Ingredients",
       "arity": "List"
     }
   ]

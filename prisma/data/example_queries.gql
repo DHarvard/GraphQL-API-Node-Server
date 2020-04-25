@@ -1,8 +1,13 @@
 query getRecipe {
-  Recipe(id: "ck9eomt5k000021v43am1zrss") {
+  Recipe(id: "ck9erruad0000fyv4gs0spxmz") {
     id
     title
     instructions
+    ingredients {
+      quantity
+      title
+      type
+    }
   }
 }
 
@@ -11,6 +16,24 @@ query allRecipes {
     id 
     title
     instructions
+    ingredients {
+      quantity
+      title
+      type
+    }
+  }
+}
+
+query filterRecipes {
+  Recipes(searchString: "Roasted") {
+    id
+    title
+    instructions
+    ingredients {
+      quantity
+      title
+      type
+    }
   }
 }
 
@@ -39,25 +62,72 @@ mutation createRecipe {
     title: "Chicken Roast"
     instructions: {
       set: [
-      "Bake in oven",
-      "Let cool 10 minutes"
+      	"Mix Ingredients together"
+      	"Cook in crock pot for 3 hours",
     ]
     } 
     ingredients: {
-    create:  [
-      {
-        title: "Chicken"
-        type: "meat"
-        quantity: "2 lbs"
-      }
-    ]
+      create: [
+        { 
+          quantity: "2 lbs"
+        	title: "chicken"
+          type: "meat"
+        }
+        { 
+          quantity: "2 cups"
+        	title: "chicken borth"
+          type: "produce"
+        }
+        { 
+          quantity: "1 package"
+        	title: "italian seasoning"
+          type: "baking"
+        }
+      ]
     }
-    imageUrl: "dskjh"
+    imageUrl: ""
   } 
   ){
     id
     title
     instructions
-    ingredients
+    ingredients {
+      quantity
+      title
+      type
+    }
   }
+  }
+
+  mutation updateRecipe {
+  updateOneRecipe (where: { id: "ck9evg6fq0029amv451nbhr32"}
+    data: {
+    
+    title: "Updated Recipe"
+    instructions: {
+      set: [
+      	"Updated instruction"
+      	"Updated instruction",
+    ]
+    } 
+    imageUrl: ""
+  } 
+  ){
+    id
+    title
+    instructions
+    ingredients {
+      quantity
+      title
+      type
+    }
+  }
+  }
+
+  mutation deleteRecipe {
+    deleteOneRecipe (where: {id: "ck9evjub00033amv4fh347o0e"})
+    {
+      id
+      title
+    }
   }

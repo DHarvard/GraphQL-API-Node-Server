@@ -29,5 +29,5 @@ model simpleRecipe {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     title String
-    ingredients String[]
+    ingredients Ingredients[]
 }
